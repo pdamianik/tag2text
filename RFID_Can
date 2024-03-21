@@ -1,0 +1,21 @@
+import can
+from can import Message
+
+def send_letter(letter):
+    bus = can.Bus(interface='socketcan', channel='can0', bitrate=250000)
+    if letter == "H":
+        letterint = 1
+    elif letter == "I":
+        letterint = 2
+    elif letter == "T":
+        letterint = 3
+    #test = Message(data=[letterint])
+    #print(test)
+
+    msg = Message(arbitration_id=0x7df, data=[letterint], is_extended_id=False)
+    print(msg)
+    bus.send(msg)
+    bus.shutdown()
+
+if __name__ == '__main__':
+    send_letter("T")
