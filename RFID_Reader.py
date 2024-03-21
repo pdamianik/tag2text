@@ -2,7 +2,7 @@ from __future__ import print_function
 import qwiic_rfid
 import time
 import sys
-
+from RFID_Method import RFID_Method
 
 def run_example():
     print("\nSparkFun Qwiic RFID Reader Example 1")
@@ -20,7 +20,8 @@ def run_example():
         if int(val) == 1:
             print("\nGetting your tag ID...")
             tag = my_RFID.get_tag()
-            print("\nTag ID: " + tag)
+            buchstabe = RFID_Method().check_tag(tag)
+            print("\nTag ID: " + tag + " " + buchstabe)
 
             scan_time = my_RFID.get_prec_req_time()
             # If this time is too precise, try:
