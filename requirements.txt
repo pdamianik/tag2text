@@ -1,0 +1,1 @@
+sparkfun-qwiic-rfid>=2.0.0
